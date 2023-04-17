@@ -1,14 +1,25 @@
 import React from "react";
 import MeetupDetail from "../../components/meetups/MeetupDetail";
 import { MongoClient, ObjectId } from "mongodb";
+import Head from "next/head";
+
 function Meetup(props) {
   return (
-    <MeetupDetail
-      title={props.meetupData.title}
-      address={props.meetupData.address}
-      image={props.meetupData.image}
-      description={props.meetupData.description}
-    />
+    <>
+      <Head>
+        <title>{props.meetupData.title}</title>
+        <meta
+          name="description"
+          content="Browse a huge list of highly active React Meetups"
+        />
+      </Head>
+      <MeetupDetail
+        title={props.meetupData.title}
+        address={props.meetupData.address}
+        image={props.meetupData.image}
+        description={props.meetupData.description}
+      />
+    </>
   );
 }
 export const getStaticPaths = async () => {
